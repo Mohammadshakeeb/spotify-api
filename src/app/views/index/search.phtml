@@ -1,0 +1,44 @@
+<?php
+// echo "<pre>";
+// print_r($response);
+$i="https://covers.openlibrary.org/b/olid/";
+$r="-M.jpg";
+$a="https://www.amazon.in/Harry-Potter-Weisen-German-Sorcerers/dp/";
+   foreach($response->docs as $k =>$v){
+       $data=$v->seed[0]; 
+       $j= substr($data,7);
+      $k=$i.$j.$r;
+      // echo $k;
+      // die;
+       ?>
+       <form action="single" method="post">
+<div class="card" style="width: 20rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title"><b><?php echo $v->title; ?></b></h5>
+    <p class="card-text">ISBN : <?php print_r ($v->isbn[0]);    ?> </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><img src="<?php echo $i.$j.$r ;?>" ></li>
+    <li class="list-group-item"> BY <b> <?php print_r ($v->author_name[0]);    ?></b></li>
+    <li class="list-group-item">PUBLISH YEAR <b><?php print_r ($v->publish_year[0]);    ?></b></li>
+  </ul>
+  <div class="card-body">
+    <a href="<?php echo $a . $v->id_amazon[0] ; ?>" class="card-link">Amazon link</a>
+    </div>
+    <input type="hidden" name="hidden" value="<?php echo ($v->key);    ?>">
+    <input type="hidden" name="imghidden" value="<?php echo $i.$j.$r ;?>" >
+    <div class="card-body">
+    <input type="submit" value="Explore" class="btn btn-primary">
+    </div>
+   
+    
+   </form>
+  
+
+
+
+  <?php       
+   }
+?>
+

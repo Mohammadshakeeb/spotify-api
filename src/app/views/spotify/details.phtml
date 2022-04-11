@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="home">GO BACK</a>
+    <br>
+<h1>MY PLAYLISTS</h1>
+<?php foreach($detail['items'] as $k =>$v){  ?>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">IMAGE</th>
+      <th scope="col">NAME</th>
+      <th scope="col">SINGER</th>
+      <th scope="col">PLAY</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <th scope="row"><img src="<?php echo $v['track']['album']['images'][0]['url'] ; ?> " height=200px width=200px></th>
+      <td style="font-size: x-large;"><b><?php echo $v['track']['name'] ; ; ?></b></td>
+      <td style="font-size: x-large;"><b><?php  echo $v['track']['album']['artists'][0]['name'] ?></b></td>
+      <td><a href="<?php echo $v['added_by']['external_urls']['spotify']; ?>"><b>PLAY</b></a></td>
+    </tr>
+   
+  </tbody>
+</table>
+
+
+ <?php  } ?>
+</body>
+</html>

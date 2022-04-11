@@ -1,0 +1,23 @@
+<?php 
+
+
+foreach($location as $k=>$v ){
+
+
+?>
+
+
+<div class="card">
+<div class="card-header">
+  Featured
+</div>
+<div class="card-body">
+  <h3 class="card-title"><b><?php print_r($v['name']); ?></b></h3>
+  <p class="card-text">Get all the information about weather in realtime using the weather API</p>
+  <form method="post" action="info">
+  <input type="hidden" name="location" value="<?php print_r($v['name']); ?>">
+  <input type="submit" class="btn btn-primary" value="GET DETAILS">
+</div>
+</div>
+</form>
+<?php } ?>

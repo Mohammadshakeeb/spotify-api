@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center> <h1>SPORTS INFORMATION FOR <?php echo $location ; ?></h1></center><br><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+     
+      <th scope="col"><b>FIELD</b></th>
+      <th scope="col"><b>CONDITIONS</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td>STADIUM</td>
+      <td> <?php echo $weather['golf'][0]['stadium']; ?></td>
+    </tr>
+    <tr>
+    
+      <td>COUNTRY</td>
+      <td> <?php echo $weather['golf'][0]['country']; ?></td>
+    </tr>
+   
+   
+   <td>TOURNAMENT</td>
+   <td> <?php echo $weather['golf'][0]['tournament']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>START</td>
+   <td> <?php echo $weather['golf'][0]['start']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>MATCH</td>
+   <td> <?php echo $weather['golf'][0]['match']; ?></td>
+ </tr>
+ 
+  </tbody>
+</table>
+</body>
+</html>
+
+<!-- Array
+(
+    [football] => Array
+        (
+            [0] => Array
+                (
+                    [stadium] => Burnley
+                    [country] => United Kingdom
+                    [region] => 
+                    [tournament] => Premier League
+                    [start] => 2022-04-06 19:30
+                    [match] => Burnley vs Everton
+                ) -->

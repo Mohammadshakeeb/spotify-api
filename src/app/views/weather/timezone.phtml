@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center> <h1>TIMEZONE OF <?php echo $location ; ?></h1></center><br><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+     
+      <th scope="col"><b>FIELD</b></th>
+      <th scope="col"><b>CONDITIONS</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td>NAME</td>
+      <td> <?php echo $weather['location']['name']; ?></td>
+    </tr>
+    <tr>
+    
+      <td>REGION</td>
+      <td> <?php echo $weather['location']['region']; ?></td>
+    </tr>
+    <tr>
+   
+      <td>COUNTRY</td>
+      <td> <?php echo $weather['location']['country']; ?></td>
+    </tr>
+    <tr>
+   
+   <td>LATTITUDE</td>
+   <td> <?php echo $weather['location']['lat']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>LONGITIDE</td>
+   <td> <?php echo $weather['location']['lon']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>TIMEZONE ID</td>
+   <td> <?php echo $weather['location']['tz_id']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>LOCAL TIME</td>
+   <td> <?php echo $weather['location']['localtime']; ?></td>
+ </tr>
+  </tbody>
+</table>
+</body>
+</html>
+
+<!-- Array
+(
+    [location] => Array
+        (
+            [name] => Centro Familiar La Soledad
+            [region] => Guanajuato
+            [country] => Mexico
+            [lat] => 21.14
+            [lon] => -101.75
+            [tz_id] => America/Mexico_City
+            [localtime_epoch] => 1649240798
+            [localtime] => 2022-04-06 5:26
+        )
+
+) -->

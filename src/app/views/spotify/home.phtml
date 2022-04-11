@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Phalcon Tutorial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<h1>USING THE SPOTIFY API</h1><br><br>
+<h2>SEARCH ANY SONG/ALBUM/TRACK</h2>
+<br>
+<form method="POST" action="search">
+<div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" name="search" aria-describedby="search-addon" />
+  <button type="submit" class="btn btn-outline-primary">search</button>
+</div><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="album" value="album">
+  <label class="form-check-label" for="inlineCheckbox1">ALBUM</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="artist" value="artist">
+  <label class="form-check-label" for="inlineCheckbox2">ARTIST</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="playlist" value="playlist">
+  <label class="form-check-label" for="inlineCheckbox3">PLAYLIST</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="track" value="track">
+  <label class="form-check-label" for="inlineCheckbox4">TRACK</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="show" value="show">
+  <label class="form-check-label" for="inlineCheckbox5">SHOW</label>
+</div>
+<!-- <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="inlineCheckbox6" value="option6">
+  <label class="form-check-label" for="inlineCheckbox6">EPISODE</label>
+</div> -->
+</form>
+    <br><br>
+<h2>Create a new playlist</h2>
+    <form method="POST" action="createplaylist">
+      <input type="text" name="name" placeholder="Enter the name of the playlist">
+      <input type="text" name="description" placeholder="Description">
+      <input type="submit" value="Create"><br><br>
+<!-- <a href="createplaylist" ><h2> Create a new Playlist</h2></a> -->
+
+
+<h1>MY PLAYLISTS</h1>
+<?php foreach($play['items'] as $k =>$v){  ?>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">IMAGE</th>
+      <th scope="col">NAME</th>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">PLAY</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <th scope="row"><img src="<?php echo $v['images'][0]['url'] ; ?> " height=200px width=200px></th>
+      <td style="font-size: x-large;"><b><?php echo $v['name'] ; ?></b></td>
+      <td style="font-size: x-large;"><b><?php echo $v['description'] ; ?></b></td>
+      <td><a href="details?id=<?php echo $v['id'] ; ?>"><b>VIEW</b></a></td>
+    </tr>
+   
+  </tbody>
+</table>
+
+
+ <?php  } ?>
+</body>
+
+</html>

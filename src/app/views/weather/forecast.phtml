@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center> <h1> WEATHER CONDITIONS FOR TOMORROW IN <?php echo $location ; ?></h1></center><br><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+     
+      <th scope="col"><b>FIELD</b></th>
+      <th scope="col"><b>CONDITIONS</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td> MAX TEMPERATURE IN CELSIUS</td>
+      <td> <?php echo $weather['current']['temp_c']; ?></td>
+    </tr>
+    <tr>
+    
+      <td>CONDITIONS</td>
+      <td> <?php echo $weather['current']['condition']['text']; ?></td>
+    </tr>
+    <tr>
+   
+      <td>MAX WIND SPEED IN KPH</td>
+      <td> <?php echo $weather['current']['wind_kph']; ?></td>
+    </tr>
+    <tr>
+   
+   <td>MAX PRESSURE IN MB</td>
+   <td> <?php echo $weather['current']['pressure_mb']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>MAX PRECIPITATION IN MM</td>
+   <td> <?php echo $weather['current']['precip_mm']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>HUMIDITY</td>
+   <td> <?php echo $weather['current']['humidity']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>CLOUD</td>
+   <td> <?php echo $weather['current']['cloud']; ?></td>
+ </tr>
+  </tbody>
+</table>
+</body>
+</html>

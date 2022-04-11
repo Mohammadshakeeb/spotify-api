@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center> <h1>ASTRONOMY INFORMATION OF <?php echo $location ; ?></h1></center><br><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+     
+      <th scope="col"><b>FIELD</b></th>
+      <th scope="col"><b>CONDITIONS</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td>SUNRISE</td>
+      <td> <?php echo $weather['astronomy']['astro']["sunrise"]; ?></td>
+    </tr>
+    <tr>
+    
+   
+      <td>SUNSET</td>
+      <td> <?php echo $weather['astronomy']['astro']['sunset']; ?></td>
+    </tr>
+    <tr>
+   
+   <td>MOONRISE</td>
+   <td> <?php echo $weather['astronomy']['astro']['moonrise']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>MOONSET</td>
+   <td> <?php echo $weather['astronomy']['astro']['moonset'] ; ?></td>
+ </tr>
+ <tr>
+   
+   <td>MOON PHASE</td>
+   <td> <?php echo $weather['astronomy']['astro'] ['moon_phase']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>MOON ILLUMINATION</td>
+   <td> <?php echo $weather['astronomy']['astro']['moon_illumination']; ?></td>
+ </tr>
+  </tbody>
+</table>
+</body>
+</html>
+

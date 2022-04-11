@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <center> <h1>AIR QUALITY of <?php echo $location ; ?></h1></center><br><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+     
+      <th scope="col"><b>FIELD</b></th>
+      <th scope="col"><b>CONDITIONS</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td>OZONE</td>
+      <td> <?php echo $weather['current']['air_quality']['o3']; ?></td>
+    </tr>
+    <tr>
+    
+      <td>LEVEL OF CARBON-DI-OXIDE</td>
+      <td> <?php echo $weather['current']['air_quality']['co']; ?></td>
+    </tr>
+    <tr>
+   
+      <td>LEVEL OF NITROGEN-DI-OXIDE</td>
+      <td> <?php echo $weather['current']['air_quality'] ['no2']; ?></td>
+    </tr>
+    <tr>
+   
+   <td>LEVEL OF SULPHUR-DI-OXIDE</td>
+   <td> <?php echo $weather['current']['air_quality']['so2']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>FINE PARTICULATE MATTER</td>
+   <td> <?php echo $weather['current']['air_quality']['pm2_5']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>PARTICULATE MATTER</td>
+   <td> <?php echo $weather['current']['air_quality'] ['pm10']; ?></td>
+ </tr>
+ <tr>
+   
+   <td>INFRA INDEX</td>
+   <td> <?php echo $weather['current']['air_quality']['gb-defra-index']; ?></td>
+ </tr>
+  </tbody>
+</table>
+</body>
+</html>
+

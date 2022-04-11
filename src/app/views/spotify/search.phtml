@@ -1,0 +1,106 @@
+<h1><center>TRACKS</center></h1>
+
+<?php  foreach($bod as $k=>$v){
+            foreach($v as $f=>$s){ ?> 
+        
+        
+<div class="container">
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <!-- <div class="d-flex flex-column flex-lg-row">
+          <span class="avatar avatar-text rounded-3 me-4 mb-2">FD</span> -->
+          <div class="row flex-fill">
+            <div class="col-sm-5">
+                <img src="<?php echo $s['album']['images'][0]['url'] ; ?> " height=200px width=200px>
+              <!-- <h4 class="h5">Junior Frontend Developer</h4>
+              <span class="badge bg-secondary">WORLDWIDE</span> <span class="badge bg-success">$60K - $100K</span> -->
+            </div>
+            <div class="col-sm-4 py-5">
+              <span style="font-size: x-large; overflow:auto" class=badge bg-dark ">Name: <?php echo $s['album']['name'] ; ?></span>
+              <span style="font-size: x-large;" class=badge bg-dark ">Release date: <?php echo $s['album']['release_date'] ; ?></span>
+              <span style="font-size: x-large;" class=badge bg-dark ">Artist: <?php echo $s['album']['artists'][0]['name'] ; ?></span>
+              <span style="font-size: x-large;" class=badge bg-dark ">Type: <?php echo $s['album']['type'] ; ?></span>
+              <span style="font-size: x-large; overflow:auto" class=badge bg-dark ">URI : <?php echo $s['album']['uri'] ; ?></span>
+            
+            </div>
+            <div class="col-sm-3 text-lg-end">
+              <a href="#" class="btn btn-primary stretched-link">ADD TO PLAYLIST</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php  }}?>
+<br>
+<h1><center>ARTISTS</center></h1>
+
+    <?php   foreach($artist as $k=>$v){
+            foreach($v as $f=>$s){  
+                ?>
+        
+        
+<div class="container">
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <!-- <div class="d-flex flex-column flex-lg-row">
+          <span class="avatar avatar-text rounded-3 me-4 mb-2">FD</span> -->
+          <div class="row flex-fill">
+            <div class="col-sm-5">
+                <img src="<?php echo $s['images'][0]['url'] ; ?> " height=200px width=200px>
+              <!-- <h4 class="h5">Junior Frontend Developer</h4>
+              <span class="badge bg-secondary">WORLDWIDE</span> <span class="badge bg-success">$60K - $100K</span> -->
+            </div>
+            <div class="col-sm-4 py-5">
+              <span style="font-size: x-large; overflow:auto" class=badge bg-dark ">Name: <?php echo $s['name'] ; ?></span>
+              <span style="font-size: x-large;" class=badge bg-dark ">Genres: <?php echo implode(",",$s['genres']) ; ?></span>
+              <span style="font-size: x-large;" class=badge bg-dark ">Followers: <?php echo $s['followers']['total'] ; ?></span>
+              
+              
+            
+            </div>
+            <div class="col-sm-3 text-lg-end">
+              <a href="#" class="btn btn-primary stretched-link">ADD TO PLAYLIST</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php }}?>
+<br>
+<h1><center>PLAYLISTS</center></h1>
+  
+    <?php  foreach($playlist as $k=>$s){
+            // foreach($v['items'] as $f=>$s){ ?> 
+        
+        
+<div class="container">
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <!-- <div class="d-flex flex-column flex-lg-row">
+          <span class="avatar avatar-text rounded-3 me-4 mb-2">FD</span> -->
+          <div class="row flex-fill">
+            <div class="col-sm-5">
+                <img src="<?php echo $s['images'][0]['url'] ; ?> " height=200px width=200px>
+              <!-- <h4 class="h5">Junior Frontend Developer</h4>
+              <span class="badge bg-secondary">WORLDWIDE</span> <span class="badge bg-success">$60K - $100K</span> -->
+            </div>
+            <div class="col-sm-4 py-5">
+              <span style="font-size: x-large; overflow:auto" class=badge bg-dark ">Name: <?php echo $s['name'] ; ?></span>
+           
+              <span style="font-size: x-large;" class=badge bg-dark ">Description: <?php echo $s['description'] ; ?></span>
+              <span style="font-size: x-large;" class=badge bg-dark ">No.of tracks: <?php echo $s['tracks']['total'] ; ?></span>
+            
+            </div>
+            <div class="col-sm-3 text-lg-end">
+              <a href="#" class="btn btn-primary stretched-link">ADD TO PLAYLIST</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php  }?>
+        
+        
