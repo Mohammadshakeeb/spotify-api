@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="add">
+<label for="play">Choose a playlist:</label>
+<select id="play" name="play">
+<?php foreach($play['items'] as $k =>$v){  ?>
+  <option value="<?php echo $v['id'] ; ?>"><?php echo $v['name'] ; ?></option>
+ <?php } ?>
+</select>
+<input type="hidden" name="uri" value="<?php echo $uri; ?>">
+<input type="submit" value="select" >
+    </form>
+</body>
+</html>

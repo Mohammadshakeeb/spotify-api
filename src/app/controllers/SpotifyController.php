@@ -91,8 +91,8 @@ class SpotifyController extends Controller
         $body = $response->getBody();
         $bod = json_decode($body, true);
         // Implicitly cast the body to a string and echo it
-        echo "<pre>";
-        // print_r($bod);
+        // echo "<pre>";
+        // print_r($bod['tracks']);
         // die;
         $this->view->bod = $bod['tracks'];
         $this->view->artist = $bod['artists'];
@@ -157,5 +157,51 @@ class SpotifyController extends Controller
         $detail = json_decode($body, true);
         // Implicitly cast the body to a string and echo it
         $this->view->detail = $detail;
+    }
+
+    public function addAction(){
+
+        $uri=$this->request->getpost('uri');
+        // echo $uri;
+        // die;
+        $token = ($this->session->get('login'));
+        $playid = $this->request->getpost('play');
+        $url = "https://api.spotify.com/";
+        $client = new Client(
+            [
+                'base_uri' => $url,
+                'headers' => ['Authorization' => 'Bearer ' . $token]
+            ]
+        );
+        $response = $client->request('POST', "/v1/playlists/" . $playid . "/tracks?uris=" . $uri);
+        echo "Track added successfully";
+        die;
+        
+    }
+
+    public function addhelperAction(){
+
+        // $clients = new Client();
+        // $response = $clients->get('https://api.spotify.com/v1/me?access_token=' . $access . '');
+        // $bodyy = $response->getBody();
+        // $bodd = json_decode($bodyy, true);
+        // // Implicitly cast the body to a string and echo it
+        // echo "<pre>";
+        // $id = $bodd['id'];
+        // $this->session->set("id", $id);
+
+        // echo ($this->session->get('login'));
+        $uri=$this->request->get('uri');
+        $access = ($this->session->get('login'));
+        $id = ($this->session->get('id'));
+        $clientt = new Client();
+        $response = $clientt->get('https://api.spotify.com/v1/users/' . $id . '/playlists?access_token=' . $access . '');
+        $play = $response->getBody();
+        $play = json_decode($play, true);
+        $this->view->play = $play;
+        $this->view->uri=$uri;
+        // echo "<pre>";
+        // print_r($play);
+        // die;
     }
 }

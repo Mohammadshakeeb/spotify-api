@@ -21,11 +21,11 @@
               <span style="font-size: x-large;" class=badge bg-dark ">Release date: <?php echo $s['album']['release_date'] ; ?></span>
               <span style="font-size: x-large;" class=badge bg-dark ">Artist: <?php echo $s['album']['artists'][0]['name'] ; ?></span>
               <span style="font-size: x-large;" class=badge bg-dark ">Type: <?php echo $s['album']['type'] ; ?></span>
-              <span style="font-size: x-large; overflow:auto" class=badge bg-dark ">URI : <?php echo $s['album']['uri'] ; ?></span>
+              <span style="font-size: x-large; overflow:auto" class=badge bg-dark ">URI : <?php echo $s['uri'] ; ?></span>
             
             </div>
             <div class="col-sm-3 text-lg-end">
-              <a href="#" class="btn btn-primary stretched-link">ADD TO PLAYLIST</a>
+              <a href="addhelper?uri=<?php echo $s['uri'] ; ?>" class="btn btn-primary stretched-link">ADD TO PLAYLIST</a>
             </div>
           </div>
         </div>
