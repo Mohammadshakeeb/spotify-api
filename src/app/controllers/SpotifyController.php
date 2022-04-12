@@ -8,12 +8,35 @@ class SpotifyController extends Controller
 {
     public function indexAction()
     {
+        
+        // try {
+           
+        // } catch (ClientException $e) {
+
+
+        //     $email = $this->session->info['email'];
+        //     $data = Users::find(
+
+        //         [
+        //             'conditions' => 'email=:email:',
+        //             'bind' => [
+        //                 'email' => $email,
+        //             ]
+
+        //         ]
+        //     );
+        //     $token = $this->eventManager->fire('spotify:refreshToken', $this, $data);
+        //     echo $token;
+        //     $data[0]->token = $token;
+        //     $this->session->set("login", $data[0]->token);
+        // }
     }
 
     public function homeAction()
     {
         // echo "hii";
-        
+
+
         $code = $_GET['code'];
         // $url='https://accounts.spotify.com/api/token';
         // echo $code;
@@ -42,11 +65,36 @@ class SpotifyController extends Controller
         $response = json_decode($response, true);
         // echo "<pre>";
         // print_r($response);
+        // die;
         $access = $response['access_token'];
         $this->session->set("login", $access);
         $this->session->set("uid", $clientId);
         $this->session->set("secret", $clientSecret);
-    
+        $email = $this->session->info['email'];
+        // echo "<pre>";
+        //  print_r($info);
+        // die;
+
+        $data = Users::find(
+
+            [
+                'conditions' => 'email=:email:',
+                'bind' => [
+                    'email' => $email,
+                ]
+
+            ]
+        );
+        //  echo "<pre>";
+        //  print_r($data[0]);
+        // die;
+        if ($data) {
+            $data[0]->token = $response['access_token'];
+            $data[0]->refresh = $response['refresh_token'];
+            $data[0]->update();
+            // header('location:http://localhost:8080/setting');
+        }
+
 
         // $token = ($this->session->get('login'));
         $clients = new Client();
@@ -87,7 +135,27 @@ class SpotifyController extends Controller
         // echo $token;
         // die;
         $client = new Client();
-        $response = $client->get('https://api.spotify.com/v1/search?access_token=' . $token . '&q=' . $search . '&type=' . $type . '');
+        try {
+            $response = $client->get('https://api.spotify.com/v1/search?access_token=' . $token . '&q=' . $search . '&type=' . $type . '');
+        } catch (ClientException $e) {
+
+
+            $email = $this->session->info['email'];
+            $data = Users::find(
+
+                [
+                    'conditions' => 'email=:email:',
+                    'bind' => [
+                        'email' => $email,
+                    ]
+
+                ]
+            );
+            $token = $this->eventManager->fire('spotify:refreshToken', $this, $data);
+            echo $token;
+            $data[0]->token = $token;
+            $this->session->set("login", $data[0]->token);
+        }
         $body = $response->getBody();
         $bod = json_decode($body, true);
         // Implicitly cast the body to a string and echo it
@@ -121,6 +189,7 @@ class SpotifyController extends Controller
         // echo $id;
         // die;
         $val = $this->request->getpost();
+        $token = ($this->session->get('login'));
         // print_r($val);
 
         $client = new Client(
@@ -159,9 +228,10 @@ class SpotifyController extends Controller
         $this->view->detail = $detail;
     }
 
-    public function addAction(){
+    public function addAction()
+    {
 
-        $uri=$this->request->getpost('uri');
+        $uri = $this->request->getpost('uri');
         // echo $uri;
         // die;
         $token = ($this->session->get('login'));
@@ -176,10 +246,10 @@ class SpotifyController extends Controller
         $response = $client->request('POST', "/v1/playlists/" . $playid . "/tracks?uris=" . $uri);
         echo "Track added successfully";
         die;
-        
     }
 
-    public function addhelperAction(){
+    public function addhelperAction()
+    {
 
         // $clients = new Client();
         // $response = $clients->get('https://api.spotify.com/v1/me?access_token=' . $access . '');
@@ -191,7 +261,7 @@ class SpotifyController extends Controller
         // $this->session->set("id", $id);
 
         // echo ($this->session->get('login'));
-        $uri=$this->request->get('uri');
+        $uri = $this->request->get('uri');
         $access = ($this->session->get('login'));
         $id = ($this->session->get('id'));
         $clientt = new Client();
@@ -199,7 +269,7 @@ class SpotifyController extends Controller
         $play = $response->getBody();
         $play = json_decode($play, true);
         $this->view->play = $play;
-        $this->view->uri=$uri;
+        $this->view->uri = $uri;
         // echo "<pre>";
         // print_r($play);
         // die;

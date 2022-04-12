@@ -14,6 +14,8 @@ use Phalcon\Config;
 use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Http\Response;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager as EventsManager;
 require '../app/vendor/autoload.php';
 $config = new Config([]);
 
@@ -28,6 +30,12 @@ $loader->registerDirs(
     [
         APP_PATH . "/controllers/",
         APP_PATH . "/models/",
+    ]
+);
+
+$loader->registerNamespaces(
+    [
+        'App\Listeners' => APP_PATH . '/listeners'
     ]
 );
 
@@ -51,6 +59,17 @@ $container->set(
         $url->setBaseUri('/');
         return $url;
     }
+);
+
+$eventManager = new EventsManager();
+$eventManager->attach(
+    'spotify',
+    new App\Listeners\notificationListeners()
+);
+
+$container->set(
+    'eventManager',
+    $eventManager
 );
 
 $application = new Application($container);

@@ -20,7 +20,8 @@ class SignupController extends Controller
             $this->request->getPost(),
             [
                 'name',
-                'email'
+                'email',
+                'password'
             ]
         );
 
